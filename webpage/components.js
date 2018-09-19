@@ -67,22 +67,25 @@ class Ball{
 	this.x = _x;
 	this.y = _y;
 	this.r = _r;
+	this.originalR = _r;
 	this.c = _c;
 	this.label = _label;
 	}
-	update(pos)
+	
+	update(_pos,_scale)
 	{
-	this.x+=pos;
+	if (!keyIsDown(CONTROL))this.x+=_pos;
 	}
 	
 	draw()
 	{
-		if (this.x < windowWidth+this.r+100 && this.x > -this.r-100)
+		if (this.x < windowWidth+this.r+200 && this.x > -this.r-200)
 		{
 		fill(this.c);
 		ellipse(this.x,this.y,this.r,this.r,this.label);
 		fill(color(255,255,255));
 		textAlign(LEFT);
+		textSize(26+windowWidth/50);
 		text(this.label, this.x+this.r/2+100, this.y);
 		}
 	}
